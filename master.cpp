@@ -161,7 +161,7 @@ class IntDLList {
 
         ~IntDLList(){
             Node *curr;
-            for(curr = head; curr != nullptr; curr = curr->next){
+            for(curr = head; curr != nullptr;){
                 Node *next = curr->next;
                 delete curr;
                 curr = next;
