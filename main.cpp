@@ -37,6 +37,7 @@ class IntDLList {
                 cout << curr->value << " ";
                 curr = curr->next;
             }
+            cout << endl;
         }
 
         void insertInOrder(int value) {
@@ -138,18 +139,38 @@ class IntDLList {
             }
         }
 
+        string addToString() const{
+            string ordered_string;
+            Node* curr;
+            for(curr = head; curr != nullptr; curr = curr->next){
+                ordered_string += to_string(curr->value);
+            }
+            return ordered_string;
+
+        }
+
+        ~IntDLList(){
+            Node *curr, *temp;
+            for(curr = head; curr != nullptr; ){
+                temp = curr -> next;
+                delete curr;
+                curr = temp;
+            }
+            head = nullptr;
+            tail = nullptr;
+        }
+
 };
 
-int main() {
-    IntDLList myList;
-    myList.addToHead(8);
-    myList.insertInOrder(3);
-    myList.addToTail(9);
-    myList.deleteNode(8);
-    int value = myList.deleteFromTail();
-    cout << "Value: " <<value << endl;
-    myList.insertInOrder(5);
-    myList.deleteFromHead();
-
-    myList.printList();
-}
+// int main() {
+//     IntDLList myList;
+//     myList.addToHead(8);
+//     myList.insertInOrder(3);
+//     myList.addToTail(9);
+//     myList.deleteNode(8);
+//     int value = myList.deleteFromTail();
+//     cout << "Value: " <<value << endl;
+//     myList.insertInOrder(5);
+//     myList.deleteFromHead();
+//     myList.printList();
+// }
